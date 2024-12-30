@@ -6,7 +6,7 @@ AOS.init({
 
 // 复制服务器IP功能
 function copyIP() {
-    navigator.clipboard.writeText("www.madouchuanmei.com");
+    navigator.clipboard.writeText("cn-sz-yd-plustmp2.natfrp.cloud:37870");
     alert("服务器IP已复制到剪贴板！");
 }
 
@@ -24,46 +24,6 @@ particlesJS('particles-js', {
         }
     }
 });
-
-// 添加服务器状态检查功能
-async function updateServerStatus() {
-    try {
-        // 使用Minecraft Server Status API
-        const response = await fetch('https://api.mcsrvstat.us/2/www.madouchuanmei.com');
-        const data = await response.json();
-        
-        // 更新在线玩家数
-        const onlinePlayers = document.getElementById('online-players');
-        if (data.online) {
-            onlinePlayers.textContent = data.players.online;
-        } else {
-            onlinePlayers.textContent = '离线';
-        }
-
-        // 如果服务器提供了这些信息，更新其他统计数据
-        if (data.stats) {
-            // 更新运行时间
-            if (data.stats.uptime) {
-                document.getElementById('uptime').textContent = 
-                    Math.floor(data.stats.uptime / (24 * 60 * 60)) + '天';
-            }
-            
-            // 更新总注册人数
-            if (data.stats.totalPlayers) {
-                document.getElementById('total-players').textContent = 
-                    data.stats.totalPlayers + '+';
-            }
-        }
-    } catch (error) {
-        console.error('无法获取服务器状态:', error);
-    }
-}
-
-// 页面加载时获取一次数据
-updateServerStatus();
-
-// 每60秒更新一次数据
-setInterval(updateServerStatus, 60000);
 
 // 添加导航栏动画延迟
 document.addEventListener('DOMContentLoaded', function() {
