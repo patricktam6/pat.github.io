@@ -717,3 +717,49 @@ footer {
     25% { transform: rotate(-10deg); }
     75% { transform: rotate(10deg); }
 } 
+
+/* 添加新按钮样式 */
+.download-button {
+    background: linear-gradient(45deg, #3498db, #2980b9);
+    color: white;
+    padding: 15px 30px;
+    border-radius: 25px;
+    border: none;
+    font-size: 1.2em;
+    transition: all 0.3s;
+    animation: pulse 2s infinite;
+    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+    margin-top: 15px; /* 添加与上面按钮的间距 */
+    position: relative;
+}
+
+.download-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 20px rgba(52, 152, 219, 0.6);
+}
+
+/* 添加提示框样式 */
+.download-button::after {
+    content: attr(title);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 8px 12px;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    border-radius: 6px;
+    font-size: 14px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    margin-bottom: 10px;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(52, 152, 219, 0.2);
+}
+
+.download-button:hover::after {
+    opacity: 1;
+    visibility: visible;
+} 
